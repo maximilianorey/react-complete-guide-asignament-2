@@ -6,7 +6,7 @@ const ExpensesFilter = (props) => {
 
   const yearSelectedHandler = (event) => {
     event.preventDefault()
-    props.onYearFilteredChanged(Number.parseInt(event.target.options[event.target.selectedIndex].value),10)
+    props.onYearFilteredChanged(Number.parseInt(event.target.options[event.target.selectedIndex].value,10))
   }
 
   return (
