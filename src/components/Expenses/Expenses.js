@@ -16,11 +16,18 @@ const Expenses = (props) => {
     return new Date(year,0,1) <= expense.date && expense.date < new Date(year + 1 , 0 ,1)
   }
 
+  function filterItems(items){
+    if(yearFiltered===''){
+      return items
+    }
+    return items.filter(expenseInYear(yearFiltered))
+  }
+
   return (
     <div>
       <ExpensesFilter onYearFilteredChanged={yearFilteredHandler}/>
       <Card className="expenses">
-        {props.items.filter(expenseInYear(yearFiltered)).map(({title,amount,date,id} )=>
+        {filterItems(props.items).map(({title,amount,date,id} )=>
           <ExpenseItem
             key={id}
             title={title}
